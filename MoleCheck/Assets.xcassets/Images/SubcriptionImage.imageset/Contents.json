@@ -1,0 +1,17 @@
+{
+  "images" : [
+    {
+      "filename" : "SubcriptionImage.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "auto-scaling" : "auto",
+    "compression-type" : "automatic",
+    "preserves-vector-representation" : true
+  }
+}
