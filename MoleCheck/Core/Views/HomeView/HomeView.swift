@@ -12,16 +12,17 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView (showsIndicators: false){
-            VStack (spacing: 30){
+            VStack (spacing: 20){
                 title
                 UserDetailView(user: store.user)
                 recentEvents
                 AddSubscriptionView()
-                MoleTestResultView(mole: someMole)
+                molesList
                 
-                Spacer()
+                Spacer(minLength: 60)
             }
         }
+       
     }
 }
 
@@ -51,6 +52,7 @@ extension HomeView {
             })
             
         }
+        .padding(.top)
     }
     
     var title: some View{
@@ -61,4 +63,25 @@ extension HomeView {
         .leadingView()
         .padding(.top, 63)
     }
+    
+    var molesList: some View{
+        
+        ForEach(store.user.result.reversed()) { result in
+            LazyVStack {
+                NavigationLink(
+                    destination: Text("Описание теста"),
+                    label: {
+                        MoleTestResultView(mole: result, index: store.user.result.firstIndex(of: result)!)
+                    })
+                    .buttonStyle(FlatLinkStyle())
+            }
+            
+         
+        }
+    }
 }
+
+
+
+
+

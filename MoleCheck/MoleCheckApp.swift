@@ -14,6 +14,7 @@ struct MoleCheckApp: App {
         WindowGroup {
                 TabBarView()
                     .environmentObject(store)
+                    .preferredColorScheme(.light)
         }
     }
 }

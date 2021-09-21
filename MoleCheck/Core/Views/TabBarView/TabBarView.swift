@@ -14,6 +14,7 @@ struct TabBarView: View {
 
     init() {
         UITabBar.appearance().isHidden = true
+        UITableViewCell.appearance().selectionStyle = .none
     }
     
     var body: some View {

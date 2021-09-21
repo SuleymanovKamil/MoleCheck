@@ -10,30 +10,28 @@ import SwiftUI
 struct TabButton: View {
     let tabIconImageName: String
     @Binding var selectedTab : String
-    @State private var showCamera: Bool = false
-    @State private var molePhoto: UIImage?
-    @State private var photoSourceType: UIImagePickerController.SourceType = .photoLibrary // сменить на .camera для теста на реальном устройстве
-    let plusButton: String = "PlusButtonIcon"
     
+    @StateObject private var vm = TabButtonViewModel()
+   
     var body: some View {
         Image("\(tabIconImageName)")
-            .frame(width: tabIconImageName == plusButton ? 64 : 24,
-                   height: tabIconImageName == plusButton ? 64 : 24)
+            .frame(width: tabIconImageName == vm.plusButton ? 64 : 24,
+                   height: tabIconImageName == vm.plusButton ? 64 : 24)
+            .onTapGesture { iconPressed() }
+            .fullScreenCover(isPresented: $vm.showCamera) {
+                ImagePickerView(selectedImage: $vm.molePhoto,
+                                sourceType: $vm.photoSourceType)}
             .overlay(RoundedRectangle(cornerRadius: 18)
                         .frame(width: 48, height: 48)
                         .foregroundColor(selectedTab == tabIconImageName
-                                            && selectedTab != plusButton ?
+                                            && selectedTab != vm.plusButton ?
                                             Color.colors.primary.opacity(0.15) : .clear))
-            .onTapGesture { iconPressed() }
-            .fullScreenCover(isPresented: $showCamera) {
-                ImagePickerView(selectedImage: $molePhoto, sourceType: $photoSourceType)
-            }
     }
     
     private func iconPressed(){
-        tabIconImageName != plusButton ?
+        tabIconImageName != vm.plusButton ?
             selectedTab = tabIconImageName :
-            showCamera.toggle()
+            vm.showCamera.toggle()
     }
 }
 
@@ -42,3 +40,4 @@ struct TabButton_Previews: PreviewProvider {
         TabButton(tabIconImageName: "HomeIcon", selectedTab: .constant("HomeIcon"))
     }
 }
+
