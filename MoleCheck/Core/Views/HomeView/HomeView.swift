@@ -8,45 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
-    
     @EnvironmentObject private var store: Store
     
     var body: some View {
         ScrollView (showsIndicators: false){
             VStack (spacing: 30){
-                Text("Главная страница")
-                .font(.title)
-                .bold()
-                .foregroundColor(Color("Black"))
-                .leadingView()
-                .padding(.top, 63)
-                    
+                title
                 UserDetailView(user: store.user)
-                
-                HStack {
-                    Text("Последние события")
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(Color("Black"))
-                        .leadingView()
-                    
-                    Spacer()
-                    
-                    Button(action: {}, label: {
-                        Text("Очистить")
-                            .font(.system(size: 13))
-                            .foregroundColor(Color("Gray"))
-                            .padding(.trailing)
-                    })
-
-                    
-                }
-                
+                recentEvents
+                AddSubscriptionView()
+                MoleTestResultView(mole: someMole)
                 
                 Spacer()
             }
-          
-               
         }
     }
 }
@@ -55,5 +29,36 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environmentObject(Store())
+    }
+}
+
+extension HomeView {
+    var recentEvents: some View {
+        HStack {
+            Text("Последние события")
+            .font(.title2)
+            .bold()
+            .foregroundColor(.colors.black)
+                .leadingView()
+            
+            Spacer()
+            
+            Button(action: {}, label: {
+                Text("Очистить")
+                    .font(.system(size: 13))
+                    .foregroundColor(.colors.gray)
+                    .padding(.trailing)
+            })
+            
+        }
+    }
+    
+    var title: some View{
+        Text("Главная страница")
+        .font(.title)
+        .bold()
+            .foregroundColor(.colors.black)
+        .leadingView()
+        .padding(.top, 63)
     }
 }

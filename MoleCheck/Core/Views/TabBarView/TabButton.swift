@@ -23,7 +23,7 @@ struct TabButton: View {
                         .frame(width: 48, height: 48)
                         .foregroundColor(selectedTab == tabIconImageName
                                             && selectedTab != plusButton ?
-                                            Color("Primary").opacity(0.15) : .clear))
+                                            Color.colors.primary.opacity(0.15) : .clear))
             .onTapGesture { iconPressed() }
             .fullScreenCover(isPresented: $showCamera) {
                 ImagePickerView(selectedImage: $molePhoto, sourceType: $photoSourceType)

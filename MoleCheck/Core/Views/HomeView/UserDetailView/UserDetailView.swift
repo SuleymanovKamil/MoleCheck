@@ -11,21 +11,20 @@ struct UserDetailView: View {
     let user: User
     var body: some View {
             HStack {
-                
                 Image("AppleWatchImage")
                     .resizable()
                     .frame(width:57.55, height: 71)
                     .scaledToFit()
                     .padding(.leading, 30)
                 
-                VStack (alignment: .leading){
+                VStack (alignment: .leading, spacing: 10){
                     Text(user.name)
                         .font(.system(size: 16))
                         .bold()
                     
                     Text(user.age + " года")
                         .font(.system(size: 13))
-                        .foregroundColor(Color("Gray"))
+                        .foregroundColor(.colors.gray)
                     
                     Spacer()
                 }
@@ -36,8 +35,8 @@ struct UserDetailView: View {
             }
             .frame(width: screen.width - 30, height: 114)
             .padding(.vertical)
-            .background(Color("Background").cornerRadius(18)
-            .shadow(color: Color("Black").opacity(0.1), radius: 5))
+            .background(Color.colors.background.cornerRadius(18)
+            .shadow(color: Color.colors.black.opacity(0.1), radius: 5))
     }
 }
 
