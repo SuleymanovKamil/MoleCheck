@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct MoleCheckApp: App {
+    
     @StateObject private var store = Store()
+    
     var body: some Scene {
         WindowGroup {
                 TabBarView()
-                    .environmentObject(store)
-                    .preferredColorScheme(.light)
+            .environmentObject(store)
+            .preferredColorScheme(.light)
         }
     }
 }
+

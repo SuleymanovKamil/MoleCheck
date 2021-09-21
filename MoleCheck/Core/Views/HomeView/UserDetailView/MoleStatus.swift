@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct MoleStatus: View {
+    
     let user: User
+    
     var body: some View {
         VStack (alignment: .leading, spacing: 5){
             ForEach(status.allCases, id: \.self) { status in
                     HStack(spacing: 10){
+                        
                         Spacer()
                         
                         Text(status.rawValue)
@@ -25,14 +28,13 @@ struct MoleStatus: View {
                             .fill(status.statusColor)
                             .frame(width: 24, height: 24)
                         
-                        Text("\(user.result.filter{$0.status == status}.count)")
+                        Text("\(user.result.filter{$0.testResult == status}.count)")
                             .font(.system(size: 15))
                             .bold()
                             .foregroundColor(.colors.primary)
                             .frame(width: 30)
                     }
                 }
-            
         }
         .padding(.trailing)
         .frame(width: screen.width / 2)

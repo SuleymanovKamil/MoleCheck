@@ -24,20 +24,34 @@ extension View {
     }
 }
 
-
-struct Center: ViewModifier {
+struct Backround: ViewModifier{
     func body(content: Content) -> some View {
-        HStack {
-            Spacer()
-            content
-            Spacer()
-        }
+        content
+        .background(Color.colors.background.cornerRadius(18)
+        .shadow(color: Color.colors.black.opacity(0.1), radius: 16))
     }
 }
 
+
 extension View {
-    func centerView() -> some View {
+    func mainBackground() -> some View {
         self
-            .modifier(Center())
+            .modifier(Backround())
+    }
+}
+
+
+struct RectangleFrame: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+        .frame(width: screen.width - 30, height: 114)
+    }
+}
+
+
+extension View {
+    func rectangleFrame() -> some View {
+        self
+            .modifier(RectangleFrame())
     }
 }

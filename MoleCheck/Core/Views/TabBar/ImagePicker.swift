@@ -5,26 +5,23 @@
 //  Created by Камиль Сулейманов on 20.09.2021.
 //
 
-
-import UIKit
 import SwiftUI
 
 struct ImagePickerView: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
-    @Binding var sourceType: UIImagePickerController.SourceType
     @Environment(\.presentationMode) var isPresented
-        
+    
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = sourceType
         imagePicker.delegate = context.coordinator
         return imagePicker
     }
-
+    
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
-
+        
     }
-
+    
     func makeCoordinator() -> Coordinator {
         return Coordinator(picker: self)
     }
@@ -45,4 +42,13 @@ struct ImagePickerView: UIViewControllerRepresentable {
     }
 }
 
+extension ImagePickerView {
+    var sourceType: UIImagePickerController.SourceType {
+#if targetEnvironment(simulator)
+        return .photoLibrary
+#else
+        return .camera
+#endif
+    }
+}
 

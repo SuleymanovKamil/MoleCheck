@@ -7,37 +7,37 @@
 
 import SwiftUI
 
-struct TabButton: View {
+struct TabIcon: View {
     let tabIconImageName: String
-    @Binding var selectedTab : String
-    
-    @StateObject private var vm = TabButtonViewModel()
+    let plusButton: String = "PlusButtonIcon"
+    @State private var showCamera: Bool = false
+    @Binding var selectedTab: String
+    @EnvironmentObject private var store: Store
    
     var body: some View {
+        let tabIconSize: CGFloat = tabIconImageName == plusButton ? 64 : 24
+        
         Image("\(tabIconImageName)")
-            .frame(width: tabIconImageName == vm.plusButton ? 64 : 24,
-                   height: tabIconImageName == vm.plusButton ? 64 : 24)
+            .frame(width: tabIconSize, height: tabIconSize)
             .onTapGesture { iconPressed() }
-            .fullScreenCover(isPresented: $vm.showCamera) {
-                ImagePickerView(selectedImage: $vm.molePhoto,
-                                sourceType: $vm.photoSourceType)}
+            .fullScreenCover(isPresented: $showCamera) {
+                ImagePickerView(selectedImage: $store.molePhoto).ignoresSafeArea()}
             .overlay(RoundedRectangle(cornerRadius: 18)
                         .frame(width: 48, height: 48)
                         .foregroundColor(selectedTab == tabIconImageName
-                                            && selectedTab != vm.plusButton ?
+                                            && selectedTab != plusButton ?
                                             Color.colors.primary.opacity(0.15) : .clear))
     }
-    
     private func iconPressed(){
-        tabIconImageName != vm.plusButton ?
+        tabIconImageName != plusButton ?
             selectedTab = tabIconImageName :
-            vm.showCamera.toggle()
+            showCamera.toggle()
     }
 }
 
 struct TabButton_Previews: PreviewProvider {
     static var previews: some View {
-        TabButton(tabIconImageName: "HomeIcon", selectedTab: .constant("HomeIcon"))
+        TabIcon(tabIconImageName: "HomeIcon", selectedTab: .constant("HomeIcon"))
     }
 }
 

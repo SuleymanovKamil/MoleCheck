@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct MoleTestsResult: Codable, Hashable, Identifiable {
+struct Mole: Codable, Hashable, Identifiable {
     var id = UUID()
     var moleDescription: String?
     var moleImage: Data?
-    let status: status
+    let testResult: status
     var testDate: String?
   
-    init(moleDescription: String?, moleImage: UIImage?, status: status, testDate: String?) {
+    init(moleDescription: String?, moleImage: UIImage?, testResult: status, testDate: String?) {
         self.moleDescription = moleDescription
         self.moleImage = moleImage?.pngData()
-        self.status = status
+        self.testResult = testResult
         self.testDate = testDate
     }
 }
 
-let someMole = MoleTestsResult(moleDescription: "Родимое пятно", moleImage: nil, status: .good, testDate: testDate)
+let someMole = Mole(moleDescription: "Родимое пятно", moleImage: nil, testResult: .good, testDate: testDate)
 
 enum status: String, Codable, CaseIterable {
     case good = "Хорошо"

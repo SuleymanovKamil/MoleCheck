@@ -6,17 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct User: Codable {
     let name: String
     let age: String
-    var result: [MoleTestsResult]  
+    var result: [Mole]
 }
 
 let someUser: User = User(name: "Иван",
                           age: "32",
                           result: [
-                            MoleTestsResult(moleDescription: "Родимое пятно", moleImage: nil, status: .good, testDate: testDate),
-                            MoleTestsResult(moleDescription: "Родимое пятно", moleImage: nil, status: .doubtfully, testDate: testDate),
-                            MoleTestsResult(moleDescription: "Родимое пятно", moleImage: nil, status: .good, testDate: testDate)
+                            Mole(moleDescription: "Родимое пятно", moleImage: nil, testResult: .good, testDate: testDate),
+                            Mole(moleDescription: "Родимое пятно", moleImage: nil, testResult: .doubtfully, testDate: testDate),
                           ])
+
+

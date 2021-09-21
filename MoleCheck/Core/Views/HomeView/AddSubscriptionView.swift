@@ -44,9 +44,10 @@ struct AddSubscriptionView: View {
                 .offset(x: -10)
             }
         }
-        .frame(width: screen.width - 30, height: 114)
-        .background(Color.colors.primary.cornerRadius(18)
-                    .shadow(color: Color.colors.black.opacity(0.1), radius: 5))
+        .rectangleFrame()
+        .background(Color.colors.primary
+                        .cornerRadius(18)
+                        .shadow(color: Color.colors.black.opacity(0.1), radius: 16))
     }
 }
 

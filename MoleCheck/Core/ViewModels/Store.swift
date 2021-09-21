@@ -10,26 +10,42 @@ import Combine
 
 class Store: ObservableObject{
     @Published var user: User = someUser
+    @Published var molePhoto: UIImage?
     private var cancellable = Set<AnyCancellable>()
-    let tabButtonVM = TabButtonViewModel()
     
-    init(){
-        addMole()
-    }
+    init(){ addSubscription() }
     
-    func addMole(){
-        tabButtonVM.$molePhoto
+    func addSubscription(){
+       $molePhoto
             .sink { [weak self] image in
                 if image != nil {
-                self?.user.result.append(MoleTestsResult(moleDescription: "Родимое пятно", moleImage: image, status: .good, testDate: testDate))
+                self?.user.result.append(Mole(moleDescription: "Родимое пятно", moleImage: image, testResult: .good, testDate: testDate))
                 }
                 self?.sendNotification()
             }
             .store(in: &cancellable)
     }
+}
+
+extension Store {
+    private func getPermessionForNotification() {
+        notificationCenter.getNotificationSettings { (settings) in
+            if(settings.authorizationStatus == .authorized) {
+                print("Push notification is enabled")
+            } else {
+                notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        print("Push notification set")
+                    } else if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
     
     private func sendNotification() {
-        getPermession()
+        getPermessionForNotification()
         let content = UNMutableNotificationContent()
         content.title = "Фотография сохранена!"
         content.subtitle = "Посмотрите результат"
@@ -39,5 +55,5 @@ class Store: ObservableObject{
 
         notificationCenter.add(request)
     }
-    
+
 }

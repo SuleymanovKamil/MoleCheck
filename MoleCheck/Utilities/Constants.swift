@@ -19,20 +19,4 @@ var testDate: String {
     return "\(dateFormatter.string(from: today))"
 }
 
-func getPermession() {
-    notificationCenter.getNotificationSettings { (settings) in
-        if(settings.authorizationStatus == .authorized) {
-            print("Push notification is enabled")
-        } else {
-            notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                if success {
-                    print("Push notification set")
-                } else if let error = error {
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
-}
-
 

@@ -22,7 +22,6 @@ struct HomeView: View {
                 Spacer(minLength: 60)
             }
         }
-       
     }
 }
 
@@ -34,13 +33,21 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 extension HomeView {
+    var title: some View{
+        Text("Главная страница")
+            .font(.title)
+            .bold()
+            .foregroundColor(.colors.black)
+            .leadingView()
+            .padding(.top, 63)
+    }
+    
     var recentEvents: some View {
         HStack {
             Text("Последние события")
-            .font(.title2)
-            .bold()
-            .foregroundColor(.colors.black)
-                .leadingView()
+                .font(.system(size: 18))
+                .bold()
+                .foregroundColor(.colors.black)
             
             Spacer()
             
@@ -48,26 +55,14 @@ extension HomeView {
                 Text("Очистить")
                     .font(.system(size: 13))
                     .foregroundColor(.colors.gray)
-                    .padding(.trailing)
             })
-            
         }
-        .padding(.top)
-    }
-    
-    var title: some View{
-        Text("Главная страница")
-        .font(.title)
-        .bold()
-            .foregroundColor(.colors.black)
-        .leadingView()
-        .padding(.top, 63)
+        .padding([.top, .horizontal])
     }
     
     var molesList: some View{
-        
-        ForEach(store.user.result.reversed()) { result in
-            LazyVStack {
+        VStack {
+            ForEach(store.user.result.reversed()) { result in
                 NavigationLink(
                     destination: Text("Описание теста"),
                     label: {
@@ -75,8 +70,6 @@ extension HomeView {
                     })
                     .buttonStyle(FlatLinkStyle())
             }
-            
-         
         }
     }
 }

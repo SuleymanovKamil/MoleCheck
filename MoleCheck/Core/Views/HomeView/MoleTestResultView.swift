@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct MoleTestResultView: View {
-    
-    let mole: MoleTestsResult
+    let mole: Mole
     let index: Int
+    
     var body: some View {
         
         HStack {
-                Image(uiImage: (mole.moleImage != nil ? UIImage(data: mole.moleImage!) : UIImage(named: "MoleImage"))!)
-                    .resizable()
-                    .cornerRadius(18)
-                    .frame(width: 79, height: 79)
-                    .padding(.horizontal)
+            
+            Image(uiImage: (mole.moleImage != nil ? UIImage(data: mole.moleImage!) : UIImage(named: "MoleImage"))!)
+                .resizable()
+                .cornerRadius(18)
+                .frame(width: 79, height: 79)
+                .padding(.horizontal)
             
             VStack (alignment: .leading, spacing: 10){
                 
@@ -32,23 +33,22 @@ struct MoleTestResultView: View {
                     .bold()
                     .foregroundColor(.colors.gray)
                 
-                Text(mole.status.rawValue)
-                    .font(.system(size: 13))
+                Text(mole.testResult.rawValue)
+                    .font(.system(size: 11))
                     .foregroundColor(.white)
                     .frame(width: 91, height: 20)
-                    .background(mole.status.statusColor.cornerRadius(5))
+                    .background(mole.testResult.statusColor.cornerRadius(5))
             }
             
             Spacer()
             
             Image(systemName: "chevron.forward")
-                .font(.title3)
+                .font(.system(size: 14.51))
                 .foregroundColor(.colors.black)
                 .padding(.trailing)
         }
-        .frame(width: screen.width - 30, height: 114)
-        .background(Color.white.cornerRadius(18)
-                        .shadow(color: Color.colors.black.opacity(0.1), radius: 5))
+        .rectangleFrame()
+        .mainBackground()
     }
 }
 
