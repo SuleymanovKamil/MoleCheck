@@ -26,7 +26,7 @@
 		6B8C66D926F9218E004204EE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C66D826F9218E004204EE /* Color.swift */; };
 		6B8C66DB26F92A35004204EE /* MoleTestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C66DA26F92A35004204EE /* MoleTestResultView.swift */; };
 		6B8C66DD26F92C24004204EE /* Mole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C66DC26F92C24004204EE /* Mole.swift */; };
-		6BC38E3B26FA50B500768C36 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BC38E3926FA50B500768C36 /* Localizable.strings */; };
+		6BB3488226FA865200228167 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BB3488126FA865200228167 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 		6B8C66D826F9218E004204EE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		6B8C66DA26F92A35004204EE /* MoleTestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoleTestResultView.swift; sourceTree = "<group>"; };
 		6B8C66DC26F92C24004204EE /* Mole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mole.swift; sourceTree = "<group>"; };
-		6BC38E3A26FA50B500768C36 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ../../../Enumberator/Enumberator/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6BB3488126FA865200228167 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				6B2C4B0126F8C96300EE6204 /* Constants.swift */,
-				6BC38E3926FA50B500768C36 /* Localizable.strings */,
+				6BB3488126FA865200228167 /* Localizable.strings */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2C4AE826F88E2D00EE6204 /* Preview Assets.xcassets in Resources */,
-				6BC38E3B26FA50B500768C36 /* Localizable.strings in Resources */,
+				6BB3488226FA865200228167 /* Localizable.strings in Resources */,
 				6B2C4AE526F88E2D00EE6204 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,18 +281,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		6BC38E3926FA50B500768C36 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6BC38E3A26FA50B500768C36 /* ru */,
-			);
-			name = Localizable.strings;
-			path = MoleCheck/Utilities;
-			sourceTree = SOURCE_ROOT;
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6B2C4AEA26F88E2D00EE6204 /* Debug */ = {
